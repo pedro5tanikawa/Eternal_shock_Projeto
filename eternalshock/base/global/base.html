@@ -1,0 +1,15 @@
+{% include "global/partials/head.html" %}
+<body>
+    {% include "global/partials/header.html" %}
+    {% include "global/partials/menu.html" %}
+    {% block corpo%}
+    conteudo do corpo da página
+   
+    {% endblock corpo %}
+    {% include "global/partials/footer.html" %}
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous">
+  </script>
+</body>
+
+</html>

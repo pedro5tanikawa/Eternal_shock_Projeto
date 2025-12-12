@@ -1,221 +1,123 @@
+{% extends "global/base.html" %}
 
+    {% block corpo %}
 
-<!DOCTYPE html> 
+  <main>
 
-<html lang="pt-BR"> 
+    <section id="Modelos" class="container my-4">
+  
+      <h1> <i class="bi bi-lightning-charge-fill"></i>Primeiros Modelos  <i class="bi bi-lightning-charge-fill"></i> </h1>
+      <hr>
+<p>A criação dos primeiros modelos da G-Shock nasceu de um desafio quase impossível: desenvolver um relógio capaz de resistir a impactos extremos e condições adversas sem perder a precisão. No início dos anos 1980, a Casio buscava romper com o conceito tradicional de relógios delicados e frágeis. A ideia era criar algo totalmente novo — um relógio indestrutível, pensado para o uso diário em qualquer situação, de esportes radicais a ambientes de trabalho pesados.
 
-<head> 
+Depois de inúmeros protótipos e testes rigorosos, nasceu o DW-5000C, lançado em 1983. O design quadrado, que se tornaria um ícone, combinava estética robusta com uma engenharia inteligente: um sistema de suspensão interna que protegia o módulo eletrônico de quedas e choques, além de uma carcaça de resina altamente resistente. O relógio era à prova d’água até 200 metros e suportava impactos que destruiriam praticamente qualquer outro relógio da época.
 
-    <meta charset="UTF-8"> 
- <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
-     <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous"> 
-    <link rel="stylesheet" href="css/style.css"> 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=BBH+Sans+Hegarty&family=Iceberg&display=swap" rel="stylesheet">
+O sucesso inicial foi modesto, mas o conceito chamou a atenção de quem precisava de durabilidade real — militares, trabalhadores, esportistas e aventureiros. Com o tempo, a G-Shock evoluiu de uma curiosidade técnica para um símbolo de resistência e atitude. Cada novo modelo trazia pequenas inovações — melhorias no visor, novos materiais, cronômetros mais precisos, alarmes, luzes e, mais tarde, conectividade digital.
 
-
-    <title>Modelos | Eternal G</title> 
-
-</head> 
-
-<body class="bod"> 
-
-    <header> 
-
- 
-
-           <h1 class="titulor">ETERNAL <i class="bi bi-stopwatch-fill"></i> SHOCK</i></h1>
-
-        <nav>  
-
-           <ul> 
-  <li> <a href="index.html"> Início    <i class="bi bi-flower2"></i></a> </li> 
-
- <li><a href="historia.html">Onde tudo começou <i class="bi bi-flower2"></i></a> </li> 
-
-   <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle text-danger" href="#" role="button" data-bs-toggle="dropdown"
-                aria-expanded="false">
-                Modelos <i class="bi bi-flower2"></i>
-              </a>
-              <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Primeiros modelos</a></li>
-                <li><a class="dropdown-item" href="collabs.html">collabs</a></li>
-              </ul>
-                 <li><a href="testes.html">Testes de Resistencia <i class="bi bi-flower2"></i></a></li>
-
-    </header> 
-
-    <main> 
-
-        <section id="Modelos" class="container my-4">
-            <hr>
-            <h1>❊ Modelos ❊</h1>
-            <hr>
-        
-            <div class="row justify-content-center">
-              <article class="col-12 col-md-6 custom-col mb-4">
-                <div class="card h-100">
-                  <img src="fotos/dw5000.png" class="card-img-top" alt="DW-5000">
-                  <div class="card-body">
-                    <h5 class="card-title">DW - 5000</h5>
-                    <p class="card-text">R$1292,90</p>
-                    <a href="#" class="btn btn-primary">avise-me quando chegar</a>
-                  </div>
-                </div>
-              </article>
-        
-              <article class="col-12 col-md-6 custom-col mb-4">
-                <div class="card h-100">
-                  <img src="fotos/dw5500.png" class="card-img-top" alt="DW-5600">
-                  <div class="card-body">
-                    <h5 class="card-title">DW - 5600</h5>
-                    <p class="card-text">R$340,00</p>
-                    <a href="#" class="btn btn-primary">avise-me quando chegar</a>
-                  </div>
-                </div>
-              </article>
-        
-              <article class="col-12 col-md-6 custom-col mb-4">
-                <div class="card h-100">
-                  <img src="fotos/WW5300.png" class="card-img-top" alt="WW-5300">
-                  <div class="card-body">
-                    <h5 class="card-title">WW - 5300</h5>
-                    <p class="card-text">R$590,00</p>
-                    <a href="#" class="btn btn-primary">avise-me quando chegar</a>
-                  </div>
-                </div>
-              </article>
-        
-              <article class="col-12 col-md-6 custom-col mb-4">
-                <div class="card h-100">
-                  <img src="fotos/image.avif" class="card-img-top" alt="AW-500">
-                  <div class="card-body">
-                    <h5 class="card-title">AW - 500</h5>
-                    <p class="card-text">R$899,90</p>
-                    <a href="#" class="btn btn-primary">avise-me quando chegar</a>
-                  </div>
-                </div>
-              </article>
-        
-              <article class="col-12 col-md-6 custom-col mb-4">
-                <div class="card h-100">
-                  <img src="fotos/GA-2100-1A1_Seq01.avif" class="card-img-top" alt="GA-2100">
-                  <div class="card-body">
-                    <h5 class="card-title">GA - 2100</h5>
-                    <p class="card-text">R$449,00</p>
-                    <a href="#" class="btn btn-primary">avise-me quando chegar</a>
-                  </div>
-                </div>
-              </article>
+A essência dos primeiros G-Shock permanece até hoje: unir tecnologia e resistência em um design que não apenas desafia o tempo, mas também o representa. O início da marca foi marcado por persistência, experimentação e uma visão clara — a de que um relógio não deveria ser apenas um acessório, mas uma extensão da força e da determinação de quem o usa.</p>
+      <div class="row justify-content-center">
+        <article class="col-12 col-md-6 custom-col mb-4">
+          <div class="card h-100">
+            <img src="fotos/dw5000.png" class="card-img-top" alt="DW-5000">
+            <div class="card-body">
+              <h5 class="card-title">DW - 5000 (1983)</h5>
+              <p class="card-text">Primeiro G-SHOCK: caixa com “estrutura oca” (hollow structure), módulo digital, resistência a impacto (“shock-resistant”) e resistência à água (10 bar ou mais) como parte do conceito “Triple 10”.</p>
+              
             </div>
-          </section>
+          </div>
+        </article>
 
-   <SECtion id="comparativo"> 
+        <article class="col-12 col-md-6 custom-col mb-4">
+          <div class="card h-100">
+            <img src="fotos/DW-5200C-1.png" class="card-img-top" alt="DW-5600">
+            <div class="card-body">
+              <h5 class="card-title">DW‑5200C (1984)</h5>
+              <p class="card-text">Evolução do DW-5000C, similar em visual “quadrado”, módulo digital baseado no original, foco em robustez para uso “extremo”.</p>
+            </div>
+          </div>
+        </article>
 
-    <h1>Comparativo dos modelos</h1> 
+        <article class="col-12 col-md-6 custom-col mb-4">
+          <div class="card h-100">
+            <img src="fotos/DW-5300G-9CV.png" class="card-img-top" alt="WW-5300">
+            <div class="card-body">
+              <h5 class="card-title">DW-5300G (1984)</h5>
+              <p class="card-text">Mais experimental, dentro das formas “square” típicas da linha inicial; módulo digital, resistência ao choque, possivelmente resistência térmica ampliada.</p>
+             
+            </div>
+          </div>
+        </article>
 
-    <table> 
+        <article class="col-12 col-md-6 custom-col mb-4">
+          <div class="card h-100">
+            <img src="fotos/DW-5400C.png" class="card-img-top" alt="AW-500">
+            <div class="card-body">
+              <h5 class="card-title">dw-5400 (1985)</h5>
+              <p class="card-text">Início dos modelos "round", virado para melhorar usabilidade, resistência, talvez mudança no módulo ou no layout do visor.</p>
+             
+            </div>
+          </div>
+        </article>
 
-        <thead> 
+        <article class="col-12 col-md-6 custom-col mb-4">
+          <div class="card h-100">
+            <img src="fotos/dw5500.png" class="card-img-top" alt="GA-2100">
+            <div class="card-body">
+              <h5 class="card-title">DW-5500C (1985)</h5>
+              <p class="card-text">Novo passo técnico: caixa resistente a poeira/sujeira (“dust/dirt-proof construction”) além de resistência a choque.</p>
+            </div>
+          </div>
+        </article>
+        <article class="col-12 col-md-6 custom-col mb-4">
+          <div class="card h-100">
+            <img src="fotos/5600c.png" class="card-img-top" alt="GA-2100">
+            <div class="card-body">
+              <h5 class="card-title">DW-5600C (1987)</h5>
+              <p class="card-text">Um dos modelos mais icónicos: formato “square” refinado, módulo digital mais eficiente, resistência ao choque consolidada.</p>
+            </div>
+          </div>
+        </article>
+         <article class="col-12 col-md-6 custom-col mb-4">
+          <div class="card h-100">
+            <img src="fotos/5700.png" class="card-img-top" alt="GA-2100">
+            <div class="card-body">
+              <h5 class="card-title">DW-5700 (1988)</h5>
+              <p class="card-text">Similar ao DW-5600C em design, talvez com mudanças menores no módulo ou visor, porém alternando para o formato redondo.</p>
+            </div>
+          </div>
+        </article>
+         <article class="col-12 col-md-6 custom-col mb-4">
+          <div class="card h-100">
+            <img src="fotos/6600.png" class="card-img-top" alt="GA-2100">
+            <div class="card-body">
+              <h5 class="card-title">DW‑6600 (1994)</h5>
+              <p class="card-text">Mudança de formato (“round case” em vez de square), primeiro G-SHOCK com luz de fundo eletroluminescente (EL backlight).</p>
+            </div>
+          </div>
+        </article>
+         <article class="col-12 col-md-6 custom-col mb-4">
+          <div class="card h-100">
+            <img src="fotos/dw 3000.jfif" class="card-img-top" alt="GA-2100">
+            <div class="card-body">
+              <h5 class="card-title">DW‑3000 (1994)</h5>
+              <p class="card-text">Variante com bezel de titânio, maior foco em durabilidade extrema além da linha principal “resina”.</p>
+            </div>
+          </div>
+        </article>
+         <article class="col-12 col-md-6 custom-col mb-4">
+          <div class="card h-100">
+            <img src="fotos/03-casio-dw-5800-2021-vohn-204.jpg" class="card-img-top" alt="GA-2100">
+            <div class="card-body">
+              <h5 class="card-title">DW‑5800 (1992)</h5>
+              <p class="card-text">Modelo mencionado em restauro oficial da Casio junto com outros “Origins Series”; reforça a linha inicial dos “square tough”.</p>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+    
 
-            <tr> 
+    
 
-                <th>Modelo</th> 
-
-                <th>Resistencia a água</th> 
-
-                <th>Funções</th> 
-
-                <th>Preço médio</th> 
-
-            </tr> 
-
-        </thead> 
-
-        <tbody> 
-
-            <tr> 
-
-                <td>DW - 5000</td> 
-
-                <td>200 metros</td> 
-
-                <td>Alarme, cronometro, luz eletroluminescente e timer</td> 
-
-                <td>R$1292,90</td> 
-
-            </tr> 
-
-            <tr> 
-
-                <td>GA - 2100</td> 
-
-                <td>200 metros</td> 
-
-                <td>Analógico/Digital, Timer, Luz LED</td> 
-
-                <td>R$ 899,90</td> 
-
-            </tr> 
-
-            <tr> 
-
-                <td>DW - 5500</td> 
-
-                <td>200 metros</td> 
-
-                <td>Alarme, cronometro, luz LED, timer regressivo</td> 
-
-                <td>R$ 699,90</td> 
-
-            </tr> 
-
-            <tr> 
-
-                 <td>AW-500</td> 
-
-                <td>100 metros</td> 
-
-                <td>Analógico/Digital, Alarme, Cronômetro</td> 
-
-                <td>R$ 499,90</td> 
-
-            </tr> 
-
-            <tr> 
-
-                <td>WW-5300</td> 
-
-                <td>200 metros</td> 
-
-                <td>Digital, Cronômetro, Luz EL, Timer</td> 
-
-                <td>R$ 999,90</td> 
-
-            </tr> 
-
-        </tbody> 
-
-    </table> 
-
-   </SECtion> 
-
-    </main> 
-
-    <footer> 
-
-         <p>&copy; 2000 e sempre, C.R.E.A.M</p> 
-
-    </footer> 
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script> 
-
-</body> 
-
-</html> 
-
- 
+  </main>
+{% endblock corpo %}
