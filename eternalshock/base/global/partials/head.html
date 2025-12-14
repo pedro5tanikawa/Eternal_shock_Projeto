@@ -1,3 +1,5 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -19,7 +21,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Iceberg&display=swap" rel="stylesheet">
 
   <!-- CSS -->
-  <link rel="stylesheet" href="/static/global/css/style.css">
+  <link rel="stylesheet" <link rel="stylesheet" href="{% static 'global/css/style.css' %}">
+>
 
   <title>{{ title }}</title>
 </head>
