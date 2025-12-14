@@ -27,4 +27,4 @@ urlpatterns = [
     path('colaboracoes/', include('colaboracoes.urls')),
 
 ]
-#polypane
+#polypane a good ass ia
