@@ -25,6 +25,7 @@ urlpatterns = [
     path('primeiros_modelos/', include('primeiros_modelos.urls')),
     path('testes/', include('testes.urls')),
     path('colaboracoes/', include('colaboracoes.urls')),
+    path('cadastro/', include('cadastro.urls')),
 
 ]
 #polypane

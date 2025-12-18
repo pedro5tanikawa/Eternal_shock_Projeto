@@ -470,3 +470,18 @@
     
   }
   
+  .cadastro_main {
+    display: flex;
+    justify-content: center;
+    padding: 60px 20px;
+  }
+
+  .cadastro-section {
+    background-color: #ff0000;
+    padding: 40px;
+    border-radius: 16px;
+    width: 100%;
+    max-width: 500px;
+    box-shadow: 0 0 25px rgba(220, 20, 60, 0.4);
+  }
+  
