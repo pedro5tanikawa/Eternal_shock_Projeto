@@ -469,7 +469,7 @@
   
     
   }
-<<<<<<< HEAD
+
   .slider {
   position: relative;
   width: 280px;
@@ -500,7 +500,7 @@
   30%  { opacity: 0; }
   100% { opacity: 0; }
 }
-=======
+
   
   .cadastro_main {
     display: flex;
@@ -517,4 +517,4 @@
     box-shadow: 0 0 25px rgba(220, 20, 60, 0.4);
   }
   
->>>>>>> 424391d94da56c3f43c5ab479192e282267cc5e2
+
