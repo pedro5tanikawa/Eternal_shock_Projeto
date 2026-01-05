@@ -25,6 +25,11 @@ urlpatterns = [
     path('primeiros_modelos/', include('primeiros_modelos.urls')),
     path('testes/', include('testes.urls')),
     path('colaboracoes/', include('colaboracoes.urls')),
+    path('cadastro/', include('cadastro.urls')),
 
 ]
+<<<<<<< HEAD
 #polypane a good ass ia
+=======
+#polypane
+>>>>>>> 424391d94da56c3f43c5ab479192e282267cc5e2
