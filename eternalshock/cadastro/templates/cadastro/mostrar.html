@@ -7,6 +7,7 @@
             <th>nome</th>
             <th>idade</th>
             <th>email</th>
+            <th>Operações</th>
         </tr>
     {% for pessoa in pessoas %}
     <tr>
@@ -15,8 +16,10 @@
         <td>{{pessoa.idade}}</td>
         <td>{{pessoa.email}}</td>
         <td>
-            <a href= {% url "editar" pessoa.id_pessoa %}>Editar</a>
-            <a href= {% url "apagar" pessoa.id_pessoa %}>Apagar</a>
+
+            <a class="btn btn-success" href= {% url "editar" pessoa.id_pessoa %}>Editar</a>
+            <a class="btn btn-warning" href= {% url "apagar" pessoa.id_pessoa %}>Apagar</a>
+        </td>
     </tr>
     {% endfor %}
     </table>

@@ -1,40 +1,56 @@
-from django.shortcuts import render, redirect
-from .models import Pessoa
+from django.shortcuts import render
 
+from cadastro.models import Pessoa
 
-# Página inicial do cadastro
-def home(request):
+# Create your views here.
+def cadastro(request):
     contexto = {
-        'title': 'Eternal Shock | Cadastro'
+        'title' : 'Jornada Viagem | Cadastro'
     }
     return render(
         request,
         'cadastro/index.html',
-        contexto
+        contexto,
     )
 
+def gravar(request): #funçao para salvar os dados para a tabela
+    nova_pessoa = Pessoa()
+    nova_pessoa.nome = request.POST.get('nome')
+    nova_pessoa.idade = request.POST.get('idade')
+    nova_pessoa.email = request.POST.get('email')
+    nova_pessoa.save()
+    
+    return cadastro(request)
 
-# Função para salvar os dados no banco
-def gravar(request):
-    if request.method == 'POST':
-        nova_pessoa = Pessoa()
-        nova_pessoa.nome = request.POST.get('nome')
-        nova_pessoa.idade = request.POST.get('idade')
-        nova_pessoa.email = request.POST.get('email')
-        nova_pessoa.save()
-
-    # depois de salvar, volta para a página de cadastro
-    return redirect('cadastro:cadastro')
-
-
-
-# Página para exibir as pessoas cadastradas
 def exibe(request):
     exibe_pessoas = {
-        'pessoas': Pessoa.objects.all()
+        "pessoas": Pessoa.objects.all()
     }
     return render(
         request,
         'cadastro/mostrar.html',
-        exibe_pessoas
+        exibe_pessoas,
     )
+
+def atualizar(request, id):
+    pessoa = Pessoa.objects.get(id_pessoa=id)
+    pessoa.nome = request.POST.get('nome')
+    pessoa.idade = request.POST.get('idade')
+    pessoa.email = request.POST.get('email')
+    pessoa.save()
+
+    return exibe(request)
+
+def editar(request, id):
+    pessoa = Pessoa.objects.get(id_pessoa=id)
+    return render(
+        request,
+        'cadastro/editar.html',
+        {'pessoa': pessoa}
+    )
+
+def apagar(request, id):
+    pessoa = Pessoa.objects.get(id_pessoa=id)
+    pessoa.delete()
+
+    return exibe(request)

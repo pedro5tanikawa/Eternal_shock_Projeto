@@ -1,0 +1,22 @@
+{% extends "global/base.html" %}
+
+    {% block formulario %}
+    <main>
+    <section class="container mt-5 mb-5">
+        <form name="atualizacao" method="post" action="{% url "atualizar" pessoa.id_pessoa %}">
+            {% csrf_token %}
+            <label for="nome" class="form-label">Nome</label>
+            <input type="text" name="nome" id="nome" class="form-control" value="{{pessoa.nome}}">
+            <label for="idade" class="form-label">Telefone</label>
+            <input type="number" name="idade" id="idade" maxlength="11" class="form-control" value="{{pessoa.idade}}">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" name="email" id="email" class="form-control" value="{{pessoa.email}}">
+            <hr> 
+            
+            <input type="submit" class="btn btn-outline-success" value="Enviar">   
+           
+            
+        </form>
+    </section>
+   </main>
+   {% endblock formulario %}
