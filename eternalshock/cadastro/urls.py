@@ -10,3 +10,5 @@ urlpatterns = [
     path('apagar/<int:id>', views.apagar, name='apagar'),
     
 ]
+
+#werfwerfwerfwef
