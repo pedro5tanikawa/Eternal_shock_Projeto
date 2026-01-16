@@ -1,0 +1,90 @@
+{% extends 'global/base.html' %}
+{% load static %}
+
+{% block titulo %}Carrinho de Compras - G-Shock{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'loja/css/style.css' %}">
+{% endblock %}
+
+{% block corpo %}
+
+<div class="carrinho-container">
+    <h2 class="carrinho-header">Carrinho de Compras</h2>
+
+    {% if itens_carrinho %}
+        <table class="tabela-carrinho">
+            <thead>
+                <tr>
+                    <th>Produto</th>
+                    <th>Preço</th>
+                    <th>Quantidade</th>
+                    <th>Total</th>
+                    <th>Ação</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in itens_carrinho %}
+                    <tr>
+                        <td class="item-carrinho-nome">
+                            <a href="{% url 'detalhes_produto' item.produto.id %}" style="color: inherit; text-decoration: none;">
+                                {{ item.produto.nome }}
+                            </a>
+                        </td>
+                        <td>R$ {{ item.produto.preco }}</td>
+                        <td>
+                            <div class="item-carrinho-quantidade">
+                                <form method="post" action="{% url 'atualizar_carrinho' item.id %}" style="display: inline;">
+                                    {% csrf_token %}
+                                    <button type="submit" name="acao" value="diminuir" class="item-carrinho-quantidade">-</button>
+                                    <input type="number" name="quantidade" value="{{ item.quantidade }}" min="1" readonly>
+                                    <button type="submit" name="acao" value="aumentar" class="item-carrinho-quantidade">+</button>
+                                </form>
+                            </div>
+                        </td>
+                        <td style="font-weight: 700; color: #ff6b00;">R$ {{ item.total_item }}</td>
+                        <td>
+                            <form method="post" action="{% url 'remover_do_carrinho' item.id %}" style="display: inline;">
+                                {% csrf_token %}
+                                <button type="submit" class="btn-remover">Remover</button>
+                            </form>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <div class="resumo-carrinho">
+            <div class="resumo-linha">
+                <span>Subtotal:</span>
+                <span>R$ {{ subtotal }}</span>
+            </div>
+            <div class="resumo-linha">
+                <span>Frete:</span>
+                <span>Calcular na entrega</span>
+            </div>
+            <div class="resumo-total">
+                <span>Total:</span>
+                <span>R$ {{ total }}</span>
+            </div>
+        </div>
+
+        <div class="botoes-carrinho">
+            <a href="{% url 'loja' %}" class="btn-continuar">
+                <i class="bi bi-arrow-left"></i> Continuar Comprando
+            </a>
+            <a href="{% url 'checkout' %}" class="btn-checkout">
+                <i class="bi bi-credit-card"></i> Ir para Checkout
+            </a>
+        </div>
+
+    {% else %}
+        <div class="carrinho-vazio">
+            <h2>Seu carrinho está vazio</h2>
+            <p>Você ainda não adicionou nenhum produto ao carrinho.</p>
+            <a href="{% url 'loja' %}" class="btn-adicionar">Continuar Comprando</a>
+        </div>
+    {% endif %}
+</div>
+
+{% endblock %}

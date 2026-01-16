@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'colaboracoes',
     'testes',
     'cadastro',
+    'loja',
 ]
 
 MIDDLEWARE = [

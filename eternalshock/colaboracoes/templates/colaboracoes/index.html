@@ -1,34 +1,140 @@
+﻿{% extends "global/base.html" %}
 
-{% extends "global/base.html" %}
-
-    {% block corpo %}
+{% block corpo %}
 
     <main>
-      <div class="collab-card">
-  <div class="slider">
-    <img src="/static/global/img/QpNjcZw4FCnHV3y8EvK8EW-1079-80.png" class="active">
-    <img src="/static/global/img/QpNjcZw4FCnHV3y8EvK8EW-1079-80.png">
-    <img src="/static/global/img/QpNjcZw4FCnHV3y8EvK8EW-1079-80.png">
-    <img src="/static/global/img/QpNjcZw4FCnHV3y8EvK8EW-1079-80.png">
-  </div>
+    <h2>Colaborações G-Shock</h2>
+    <h3>Descobra as parcerias exclusivas que transformaram o ícone da resistência em obras de arte únicas</h3>
 
-  <div class="card-content">
-    <h3>G-Shock Collaboration</h3>
-    <p>Edição especial em parceria.</p>
-  </div>
-</div>
+    <!-- Filtros -->
+    <section style="margin: 30px 0; padding: 20px;">
+        <button class="filter-btn active" data-filter="all">Todas</button>
+        <button class="filter-btn" data-filter="moda">Moda</button>
+        <button class="filter-btn" data-filter="arte">Arte & Design</button>
+        <button class="filter-btn" data-filter="esportes">Esportes</button>
+        <button class="filter-btn" data-filter="entretenimento">Entretenimento</button>
+    </section>
 
+    <!-- Grid de Colaborações -->
+    <div class="galeria" style="flex-wrap: wrap; justify-content: center;">
 
+            <!-- Card 1: Maison Kitsuné -->
+            <div style="text-align: center; padding: 15px;" data-category="moda">
+                <img src="https://via.placeholder.com/400x300?text=Maison+Kitsune" alt="G-Shock x Maison Kitsuné" style="margin-bottom: 10px;">
+                <h4 style="color: crimson; margin: 10px 0; font-family: 'Iceberg', cursive;">Maison Kitsuné</h4>
+                <p style="font-size: 0.85rem; color: #999;">Moda</p>
+                <p style="font-size: 0.9rem; color: #ddd; margin: 10px 0;">Uma colaboração sofisticada entre G-SHOCK e a icônica marca parisiense Maison Kitsuné, combinando design urbano com resistência extrema.</p>
+                <p style="font-size: 0.8rem; color: #ccc;"><strong>Modelo:</strong> GA-2110MK-5A</p>
+            </div>
 
-  
-        <h3>
-         Desde sua criação, a G-Shock construiu uma identidade baseada não apenas em resistência e inovação técnica, mas também em ousadia criativa. As colaborações da marca surgem como uma extensão natural dessa filosofia, funcionando como um espaço onde a robustez dos relógios encontra diferentes universos culturais, artísticos e esportivos. Ao longo dos anos, essas parcerias se tornaram extremamente relevantes, ajudando a G-Shock a se manter atual, conectada a novos públicos e presente em cenários que vão muito além da relojoaria tradicional.
+            <!-- Card 2: NIGO -->
+            <div style="text-align: center; padding: 15px;" data-category="arte">
+                <img src="https://via.placeholder.com/400x300?text=NIGO" alt="G-Shock x NIGO" style="margin-bottom: 10px;">
+                <h4 style="color: crimson; margin: 10px 0; font-family: 'Iceberg', cursive;">NIGO</h4>
+                <p style="font-size: 0.85rem; color: #999;">Arte & Design</p>
+                <p style="font-size: 0.9rem; color: #ddd; margin: 10px 0;">Interpretação única de NIGO dos modelos clássicos DW-5000, DW-6900, GA-2100 e GA-110, encapsulando o espírito autêntico da G-SHOCK.</p>
+                <p style="font-size: 0.8rem; color: #ccc;"><strong>Modelos:</strong> DW-5000, DW-6900, GA-2100, GA-110</p>
+            </div>
 
-Um dos aspectos mais marcantes das colaborações da G-Shock é a ausência de receio em experimentar o inusitado. A marca frequentemente se arrisca ao unir seus modelos icônicos a conceitos, estéticas e referências pouco convencionais, explorando cores, materiais e identidades visuais que fogem do padrão. Essa postura demonstra uma confiança sólida em seu produto: o relógio G-Shock é resistente o suficiente — em todos os sentidos — para servir como base de experimentação criativa sem perder sua essência.
+            <!-- Card 3: Stranger Things -->
+            <div style="text-align: center; padding: 15px;" data-category="entretenimento">
+                <img src="https://via.placeholder.com/400x300?text=Stranger+Things" alt="G-Shock x Stranger Things" style="margin-bottom: 10px;">
+                <h4 style="color: crimson; margin: 10px 0; font-family: 'Iceberg', cursive;">Stranger Things</h4>
+                <p style="font-size: 0.85rem; color: #999;">Entretenimento</p>
+                <p style="font-size: 0.9rem; color: #ddd; margin: 10px 0;">Uma edição limitada inspirada na série de sucesso Stranger Things, trazendo elementos nostálgicos dos anos 80 para o pulso.</p>
+                <p style="font-size: 0.8rem; color: #ccc;"><strong>Edição:</strong> Limitada</p>
+            </div>
 
-Outro fator que torna essas colaborações tão distintas é a criteriosa, porém diversa, escolha de parceiros. A G-Shock não se limita a marcas de luxo ou ao universo esportivo tradicional, mas dialoga com o streetwear, a música, o skate, a arte urbana e até com franquias culturais e criadores independentes. Essa pluralidade reforça o caráter inclusivo e multifacetado da marca, transformando cada colaboração em uma peça que carrega identidade própria, ao mesmo tempo em que preserva o DNA inconfundível da G-Shock.
+            <!-- Card 4: Bamford -->
+            <div style="text-align: center; padding: 15px;" data-category="arte">
+                <img src="https://via.placeholder.com/400x300?text=Bamford" alt="G-Shock x Bamford" style="margin-bottom: 10px;">
+                <h4 style="color: crimson; margin: 10px 0; font-family: 'Iceberg', cursive;">Bamford</h4>
+                <p style="font-size: 0.85rem; color: #999;">Arte & Design</p>
+                <p style="font-size: 0.9rem; color: #ddd; margin: 10px 0;">Colaboração premium com a lendária joalheria Bamford, oferecendo customizações únicas em relógios G-Shock com acabamentos personalizados.</p>
+                <p style="font-size: 0.8rem; color: #ccc;"><strong>Edição:</strong> Customizada</p>
+            </div>
+
+            <!-- Card 5: Ron Herman -->
+            <div style="text-align: center; padding: 15px;" data-category="moda">
+                <img src="https://via.placeholder.com/400x300?text=Ron+Herman" alt="G-Shock x Ron Herman" style="margin-bottom: 10px;">
+                <h4 style="color: crimson; margin: 10px 0; font-family: 'Iceberg', cursive;">Ron Herman</h4>
+                <p style="font-size: 0.85rem; color: #999;">Moda</p>
+                <p style="font-size: 0.9rem; color: #ddd; margin: 10px 0;">Primeira colaboração do Ron Herman com o modelo GA-2100, celebrando o estilo californiano e a qualidade premium da marca.</p>
+                <p style="font-size: 0.8rem; color: #ccc;"><strong>Modelo:</strong> GA-2100</p>
+            </div>
+
+            <!-- Card 6: Toyota Land Cruiser -->
+            <div style="text-align: center; padding: 15px;" data-category="esportes">
+                <img src="https://via.placeholder.com/400x300?text=Toyota+Land+Cruiser" alt="G-Shock x Toyota Land Cruiser" style="margin-bottom: 10px;">
+                <h4 style="color: crimson; margin: 10px 0; font-family: 'Iceberg', cursive;">Toyota Land Cruiser</h4>
+                <p style="font-size: 0.85rem; color: #999;">Esportes</p>
+                <p style="font-size: 0.9rem; color: #ddd; margin: 10px 0;">Edição especial Mudman Master-of-G em colaboração com a lendária Toyota Land Cruiser, perfeita para aventureiros.</p>
+                <p style="font-size: 0.8rem; color: #ccc;"><strong>Modelo:</strong> GW-9500TLC-1</p>
+            </div>
+
+            <!-- Card 7: Beautiful People -->
+            <div style="text-align: center; padding: 15px;" data-category="moda">
+                <img src="https://via.placeholder.com/400x300?text=Beautiful+People" alt="G-Shock x Beautiful People" style="margin-bottom: 10px;">
+                <h4 style="color: crimson; margin: 10px 0; font-family: 'Iceberg', cursive;">Beautiful People</h4>
+                <p style="font-size: 0.85rem; color: #999;">Moda</p>
+                <p style="font-size: 0.9rem; color: #ddd; margin: 10px 0;">Colaboração com a marca de moda japonesa Beautiful People, unindo estética minimalista com a durabilidade lendária da G-SHOCK.</p>
+                <p style="font-size: 0.8rem; color: #ccc;"><strong>Edição:</strong> Limitada</p>
+            </div>
+
+            <!-- Card 8: Evangelion -->
+            <div style="text-align: center; padding: 15px;" data-category="entretenimento">
+                <img src="https://via.placeholder.com/400x300?text=Evangelion" alt="G-Shock x Evangelion" style="margin-bottom: 10px;">
+                <h4 style="color: crimson; margin: 10px 0; font-family: 'Iceberg', cursive;">Evangelion</h4>
+                <p style="font-size: 0.85rem; color: #999;">Entretenimento</p>
+                <p style="font-size: 0.9rem; color: #ddd; margin: 10px 0;">Edição especial inspirada no anime clássico Evangelion, trazendo elementos icônicos da série para um relógio resistente e funcional.</p>
+                <p style="font-size: 0.8rem; color: #ccc;"><strong>Edição:</strong> Limitada</p>
+            </div>
+
+            <!-- Card 9: XG (Artista) -->
+            <div style="text-align: center; padding: 15px;" data-category="arte">
+                <img src="https://via.placeholder.com/400x300?text=XG+Artist" alt="G-Shock x XG" style="margin-bottom: 10px;">
+                <h4 style="color: crimson; margin: 10px 0; font-family: 'Iceberg', cursive;">XG - Embaixadora Global</h4>
+                <p style="font-size: 0.85rem; color: #999;">Arte & Design</p>
+                <p style="font-size: 0.9rem; color: #ddd; margin: 10px 0;">XG foi anunciada como Embaixadora Global da G-SHOCK, representando a marca e sua filosofia de resistência e estilo.</p>
+                <p style="font-size: 0.8rem; color: #ccc;"><strong>Modelo:</strong> GA-2100-1A1</p>
+            </div>
+        </div>
+
+    <h3 style="margin-top: 60px; padding: 40px; background: #1a1a1a; border-radius: 10px; text-shadow: 0 0 10px crimson;">Por que não?</h3>
+    <p style="padding: 0 20px; text-align: justify; line-height: 1.8; font-size: 1rem; max-width: 1200px; margin: 30px auto;">
+        Desde sua criação, a G-Shock construiu uma identidade baseada não apenas em resistência e inovação técnica, mas também em ousadia criativa. As colaborações da marca surgem como uma extensão natural dessa filosofia, funcionando como um espaço onde a robustez dos relógios encontra diferentes universos culturais, artísticos e esportivos. Ao longo dos anos, essas parcerias se tornaram extremamente relevantes, ajudando a G-Shock a se manter atual, conectada a novos públicos e presente em cenários que vão muito além da relojoaria tradicional.
+    </p>
+
+    <p style="padding: 0 20px; text-align: justify; line-height: 1.8; font-size: 1rem; max-width: 1200px; margin: 30px auto;">
+        Um dos aspectos mais marcantes das colaborações da G-Shock é a ausência de receio em experimentar o inusitado. A marca frequentemente se arrisca ao unir seus modelos icônicos a conceitos, estéticas e referências pouco convencionais, explorando cores, materiais e identidades visuais que fogem do padrão. Essa postura demonstra uma confiança sólida em seu produto: o relógio G-Shock é resistente o suficiente  em todos os sentidos  para servir como base de experimentação criativa sem perder sua essência.
+    </p>
+
+    <p style="padding: 0 20px; text-align: justify; line-height: 1.8; font-size: 1rem; max-width: 1200px; margin: 30px auto; margin-bottom: 60px;">
+        Outro fator que torna essas colaborações tão distintas é a criteriosa, porém diversa, escolha de parceiros. A G-Shock não se limita a marcas de luxo ou ao universo esportivo tradicional, mas dialoga com o streetwear, a música, o skate, a arte urbana e até com franquias culturais e criadores independentes. Essa pluralidade reforça o caráter inclusivo e multifacetado da marca, transformando cada colaboração em uma peça que carrega identidade própria, ao mesmo tempo em que preserva o DNA inconfundível da G-Shock.
+    </p>
+
+    <script>
+        // Filtro de categorias
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const collabItems = document.querySelectorAll('[data-category]');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                const filterValue = btn.getAttribute('data-filter');
+
+                collabItems.forEach(item => {
+                    if (filterValue === 'all' || item.getAttribute('data-category') === filterValue) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+    </script>
         
-        
-      </section>
     </main>
 {% endblock corpo %}

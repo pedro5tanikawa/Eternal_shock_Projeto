@@ -1,0 +1,100 @@
+{% extends 'global/base.html' %}
+{% load static %}
+
+{% block titulo %}Checkout - G-Shock{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'loja/css/style.css' %}">
+{% endblock %}
+
+{% block corpo %}
+
+<div class="checkout-container">
+    <h1 style="font-size: 2rem; font-weight: 700; color: #1a1a1a; margin-bottom: 40px; border-bottom: 3px solid #ff6b00; padding-bottom: 15px;">
+        Finalizar Compra
+    </h1>
+
+    <div class="checkout-grid">
+        <form method="post" class="checkout-formulario">
+            {% csrf_token %}
+
+            <h2>Informações Pessoais</h2>
+
+            <div class="form-grupo">
+                <label for="nome_cliente">Nome Completo *</label>
+                <input type="text" id="nome_cliente" name="nome_cliente" required value="{{ form.nome_cliente.value|default:'' }}">
+            </div>
+
+            <div class="form-grupo-inline">
+                <div class="form-grupo">
+                    <label for="email">Email *</label>
+                    <input type="email" id="email" name="email" required value="{{ form.email.value|default:'' }}">
+                </div>
+                <div class="form-grupo">
+                    <label for="telefone">Telefone *</label>
+                    <input type="tel" id="telefone" name="telefone" required value="{{ form.telefone.value|default:'' }}">
+                </div>
+            </div>
+
+            <h2 style="margin-top: 40px;">Endereço de Entrega</h2>
+
+            <div class="form-grupo">
+                <label for="endereco">Rua/Avenida *</label>
+                <input type="text" id="endereco" name="endereco" required value="{{ form.endereco.value|default:'' }}">
+            </div>
+
+            <div class="form-grupo-inline">
+                <div class="form-grupo">
+                    <label for="numero">Número *</label>
+                    <input type="text" id="numero" name="numero" required value="{{ form.numero.value|default:'' }}">
+                </div>
+                <div class="form-grupo">
+                    <label for="complemento">Complemento</label>
+                    <input type="text" id="complemento" name="complemento" value="{{ form.complemento.value|default:'' }}">
+                </div>
+            </div>
+
+            <div class="form-grupo-inline">
+                <div class="form-grupo">
+                    <label for="cidade">Cidade *</label>
+                    <input type="text" id="cidade" name="cidade" required value="{{ form.cidade.value|default:'' }}">
+                </div>
+                <div class="form-grupo">
+                    <label for="estado">Estado *</label>
+                    <input type="text" id="estado" name="estado" required maxlength="2" value="{{ form.estado.value|default:'' }}">
+                </div>
+                <div class="form-grupo">
+                    <label for="cep">CEP *</label>
+                    <input type="text" id="cep" name="cep" required value="{{ form.cep.value|default:'' }}">
+                </div>
+            </div>
+
+            <button type="submit" class="btn-finalizar">
+                <i class="bi bi-check-circle"></i> Finalizar Compra
+            </button>
+        </form>
+
+        <div class="checkout-resumo">
+            <h3>Resumo do Pedido</h3>
+
+            {% for item in itens_carrinho %}
+                <div class="item-resumo">
+                    <span>{{ item.produto.nome }} (x{{ item.quantidade }})</span>
+                    <span>R$ {{ item.total_item }}</span>
+                </div>
+            {% endfor %}
+
+            <div class="total-final">
+                <span>Total:</span>
+                <span>R$ {{ total }}</span>
+            </div>
+
+            <div style="margin-top: 20px; padding: 15px; background: #fff3cd; border-radius: 5px; font-size: 0.9rem; color: #856404;">
+                <strong>ℹ️ Informação:</strong>
+                <p style="margin: 8px 0 0 0;">O valor do frete será calculado após confirmação do endereço.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
