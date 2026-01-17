@@ -1,0 +1,54 @@
+{% extends 'global/base.html' %}
+
+
+{% block corpo %}
+
+
+  {% if form.errors %}
+    <p>Seu nome de usuário e senha não correspondem. Por favor, tente novamente.</p>
+  {% endif %}
+
+
+  {% if next %}
+    {% if user.is_authenticated %}
+      <p>Sua conta não tem acesso a esta página. Para prosseguir,
+        faça login com uma conta que tenha acesso.</p>
+    {% else %}
+      <p>Faça login para ver esta página.</p>
+    {% endif %}
+  {% endif %}
+
+
+  <form method="post" action="{% url 'login' %}" class="form-control">
+    {% csrf_token %}
+    <table>
+      <tr>
+        <td>{{ form.username.label_tag }}</td>
+        <td>{{ form.username }}</td>
+      </tr>
+      <tr>
+        <td>{{ form.password.label_tag }}</td>
+        <td>{{ form.password }}</td>
+      </tr>
+    </table>
+    <input type="submit" value="login" />
+    <input type="hidden" name="next" value="{{ next }}" />
+
+
+    {# Supõe que você configure a visualização password_reset em seu URLconf #}
+    <p><a href="{% url 'password_reset' %}">Esqueceu a senha?</a></p>
+   
+  </form>
+
+
+ 
+{% endblock corpo %}
+<html xmlns:mso="urn:schemas-microsoft-com:office:office" xmlns:msdt="uuid:C2F41010-65B3-11d1-A29F-00AA00C14882"><head>
+<!--[if gte mso 9]><xml>
+<mso:CustomDocumentProperties>
+<mso:_ApprovalStatus msdt:dt="string">0</mso:_ApprovalStatus>
+<mso:_ApprovalAssignedTo msdt:dt="string"></mso:_ApprovalAssignedTo>
+<mso:_ApprovalRespondedBy msdt:dt="string"></mso:_ApprovalRespondedBy>
+</mso:CustomDocumentProperties>
+</xml><![endif]-->
+</head>
