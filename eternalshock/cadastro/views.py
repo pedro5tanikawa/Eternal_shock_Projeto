@@ -100,20 +100,27 @@ def gravar(request): #funçao para salvar os dados para a tabela
             return render(request, 'cadastro/index.html', contexto)
 
 @login_required(login_url='/accounts/login/')
+@login_required(login_url='/accounts/login/')
+@login_required(login_url='/accounts/login/')
 def perfil(request):
-    """Exibe o perfil do usuário logado"""
-    try:
-        pessoa = Pessoa.objects.get(user=request.user)
-    except Pessoa.DoesNotExist:
-        # Se não houver Pessoa, redireciona para cadastro
-        return redirect('cadastro:gravar')
+    """Exibe o perfil do usuário logado, criando um se não existir"""
+    # Tenta buscar ou criar a Pessoa vinculada ao usuário
+    pessoa, created = Pessoa.objects.get_or_create(
+        user=request.user,
+        defaults={
+            'nome': request.user.first_name or request.user.username,
+            'email': request.user.email,
+            'idade': 0
+        }
+    )
     
     contexto = {
         'title': 'Meu Perfil',
         'pessoa': pessoa,
-        'favoritos': pessoa.favoritos.all()
+        'favoritos': pessoa.favoritos.all() if hasattr(pessoa, 'favoritos') else []
     }
     return render(request, 'cadastro/perfil.html', contexto)
+
 
 @login_required(login_url='/accounts/login/')
 def editar_perfil(request):
