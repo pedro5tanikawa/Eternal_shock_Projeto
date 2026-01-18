@@ -1,0 +1,260 @@
+{% extends "global/base.html" %}
+
+{% block formulario %}
+<main class="admin-loja-main">
+  <section class="admin-loja-section">
+    <h1>{% if editar %}Editar Produto{% else %}Adicionar Novo Produto{% endif %}</h1>
+    
+    <form class="admin-form" method="post" enctype="multipart/form-data" action="{% if editar %}{% url 'loja:editar_produto' produto.id %}{% else %}{% url 'loja:criar_produto' %}{% endif %}">
+      {% csrf_token %}
+
+      <!-- Nome do Produto -->
+      <div class="campo">
+        <label for="nome">Nome do Produto *</label>
+        <input type="text" name="nome" id="nome" value="{% if editar %}{{ produto.nome }}{% endif %}" required placeholder="Ex: G-Shock GA-110">
+      </div>
+
+      <!-- Descrição -->
+      <div class="campo">
+        <label for="descricao">Descrição *</label>
+        <textarea name="descricao" id="descricao" rows="6" required placeholder="Descreva detalhes do produto, especificações, características...">{% if editar %}{{ produto.descricao }}{% endif %}</textarea>
+      </div>
+
+      <!-- Categoria -->
+      <div class="campo">
+        <label for="categoria">Categoria *</label>
+        <select name="categoria" id="categoria" required>
+          <option value="">Selecione uma categoria</option>
+          <option value="relogios" {% if editar and produto.categoria == 'relogios' %}selected{% endif %}>Relógios</option>
+          <option value="acessorios" {% if editar and produto.categoria == 'acessorios' %}selected{% endif %}>Acessórios</option>
+          <option value="edicoes-limitadas" {% if editar and produto.categoria == 'edicoes-limitadas' %}selected{% endif %}>Edições Limitadas</option>
+          <option value="colaboracoes" {% if editar and produto.categoria == 'colaboracoes' %}selected{% endif %}>Colaborações</option>
+        </select>
+      </div>
+
+      <!-- Preço -->
+      <div class="campo">
+        <label for="preco">Preço (R$) *</label>
+        <input type="number" name="preco" id="preco" step="0.01" min="0" value="{% if editar %}{{ produto.preco }}{% endif %}" required placeholder="0.00">
+      </div>
+
+      <!-- Estoque -->
+      <div class="campo">
+        <label for="estoque">Quantidade em Estoque *</label>
+        <input type="number" name="estoque" id="estoque" min="0" value="{% if editar %}{{ produto.estoque }}{% else %}0{% endif %}" required>
+      </div>
+
+      <!-- Imagem -->
+      <div class="campo">
+        <label for="imagem">Imagem do Produto</label>
+        {% if editar and produto.imagem %}
+          <div class="imagem-preview">
+            <img src="{{ produto.imagem.url }}" alt="{{ produto.nome }}" title="Imagem atual">
+            <p class="info-imagem">Imagem atual</p>
+          </div>
+        {% endif %}
+        <input type="file" name="imagem" id="imagem" accept="image/*">
+        <p class="info-campo">Deixe em branco para manter a imagem atual (se editando)</p>
+      </div>
+
+      <!-- Status Ativo -->
+      <div class="campo-checkbox">
+        <input type="checkbox" name="ativo" id="ativo" {% if not editar or produto.ativo %}checked{% endif %} value="true">
+        <label for="ativo">Produto ativo (visível na loja)</label>
+      </div>
+
+      <!-- Botões -->
+      <div class="botoes">
+        <a href="{% url 'loja:index' %}" class="btn-cancelar">Cancelar</a>
+        <input type="reset" value="Limpar" class="btn-reset">
+        <input type="submit" value="{% if editar %}Atualizar{% else %}Criar{% endif %} Produto" class="btn-submit">
+      </div>
+
+    </form>
+  </section>
+</main>
+
+<style>
+  .admin-loja-main {
+    padding: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .admin-loja-section {
+    background: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .admin-loja-section h1 {
+    margin: 0 0 30px 0;
+    color: #333;
+    font-size: 2em;
+    border-bottom: 2px solid #007bff;
+    padding-bottom: 15px;
+  }
+
+  .admin-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .campo {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .campo label {
+    font-weight: bold;
+    color: #333;
+  }
+
+  .campo input[type="text"],
+  .campo input[type="number"],
+  .campo input[type="email"],
+  .campo input[type="file"],
+  .campo textarea,
+  .campo select {
+    padding: 12px;
+    border: 2px solid #ddd;
+    border-radius: 4px;
+    font-size: 1em;
+    font-family: inherit;
+    transition: border-color 0.3s;
+  }
+
+  .campo input:focus,
+  .campo textarea:focus,
+  .campo select:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+  }
+
+  .campo textarea {
+    resize: vertical;
+    min-height: 120px;
+  }
+
+  .info-campo {
+    font-size: 0.85em;
+    color: #666;
+    margin: 0;
+  }
+
+  .imagem-preview {
+    margin: 10px 0;
+    padding: 15px;
+    background: #f5f5f5;
+    border-radius: 4px;
+    text-align: center;
+  }
+
+  .imagem-preview img {
+    max-width: 100%;
+    max-height: 300px;
+    border-radius: 4px;
+    margin-bottom: 10px;
+  }
+
+  .info-imagem {
+    color: #666;
+    font-size: 0.9em;
+    margin: 0;
+  }
+
+  .campo-checkbox {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .campo-checkbox input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+  }
+
+  .campo-checkbox label {
+    margin: 0;
+    cursor: pointer;
+    font-weight: normal;
+  }
+
+  .botoes {
+    display: flex;
+    gap: 10px;
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid #ddd;
+    justify-content: flex-end;
+  }
+
+  .btn-cancelar,
+  .btn-reset,
+  .btn-submit {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 4px;
+    font-size: 1em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+  }
+
+  .btn-cancelar {
+    background: #6c757d;
+    color: white;
+  }
+
+  .btn-cancelar:hover {
+    background: #5a6268;
+  }
+
+  .btn-reset {
+    background: #fff;
+    color: #333;
+    border: 2px solid #ddd;
+  }
+
+  .btn-reset:hover {
+    background: #f5f5f5;
+  }
+
+  .btn-submit {
+    background: #28a745;
+    color: white;
+  }
+
+  .btn-submit:hover {
+    background: #218838;
+  }
+
+  @media (max-width: 768px) {
+    .admin-loja-main {
+      padding: 10px;
+    }
+
+    .admin-loja-section {
+      padding: 20px;
+    }
+
+    .botoes {
+      flex-direction: column;
+    }
+
+    .btn-cancelar,
+    .btn-reset,
+    .btn-submit {
+      width: 100%;
+    }
+  }
+</style>
+{% endblock formulario %}

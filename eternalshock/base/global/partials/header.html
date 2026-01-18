@@ -19,7 +19,30 @@
 
         <li><a href="{% url 'testes' %}">Testes de Resistência <i class="bi bi-lightning-charge-fill"></i></a></li>
         <li><a href="{% url 'cadastro:gravar' %}">Cadastro <i class="bi bi-lightning-charge-fill"></i></a></li>
-        <li><a href="{% url 'loja' %}">loja <i class="bi bi-lightning-charge-fill"></i></a></li>
+        <li><a href="{% url 'loja:index' %}">loja <i class="bi bi-lightning-charge-fill"></i></a></li>
+        
+        <!-- Login/Logout -->
+        {% if user.is_authenticated %}
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="bi bi-person-fill"></i> {{ user.username }}
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="{% url 'cadastro:perfil' %}"><i class="bi bi-gear-fill"></i> Perfil</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li>
+                <form method="post" action="{% url 'logout' %}" style="display: inline;">
+                  {% csrf_token %}
+                  <button type="submit" class="dropdown-item" style="background: none; border: none; cursor: pointer; width: 100%; text-align: left;">
+                    <i class="bi bi-box-arrow-right"></i> Logout
+                  </button>
+                </form>
+              </li>
+            </ul>
+          </li>
+        {% else %}
+          <li><a href="{% url 'login' %}"><i class="bi bi-box-arrow-in-right"></i> Login</a></li>
+        {% endif %}
       </ul>
     </nav>
   </header>

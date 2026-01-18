@@ -1,0 +1,63 @@
+{% extends "global/base.html" %}
+
+{% block formulario %}
+<main class="editar-perfil-main">
+  <section class="editar-perfil-section">
+    <h1>Editar Perfil</h1>
+    
+    <form method="post" enctype="multipart/form-data" class="editar-perfil-form">
+      {% csrf_token %}
+      
+      <div class="foto-section">
+        <h2>Foto de Perfil</h2>
+        
+        <div class="foto-preview">
+          {% if pessoa.foto_perfil %}
+            <img src="{{ pessoa.foto_perfil.url }}" alt="Foto atual" class="foto-atual">
+          {% else %}
+            <div class="foto-placeholder">
+              <i class="bi bi-image"></i>
+              <p>Nenhuma foto</p>
+            </div>
+          {% endif %}
+        </div>
+        
+        <div class="campo">
+          <label for="foto_perfil">Escolher nova foto:</label>
+          <input type="file" name="foto_perfil" id="foto_perfil" accept="image/*">
+          <small>Formatos aceitos: JPG, PNG, GIF. Tamanho máximo: 5MB</small>
+        </div>
+      </div>
+
+      <hr class="divisor">
+
+      <div class="info-section">
+        <h2>Informações Pessoais</h2>
+        
+        <div class="campo">
+          <label for="nome">Nome Completo</label>
+          <input type="text" name="nome" id="nome" value="{{ pessoa.nome }}" required>
+        </div>
+
+        <div class="campo">
+          <label for="idade">Idade</label>
+          <input type="number" name="idade" id="idade" value="{{ pessoa.idade }}" min="18" required>
+        </div>
+
+        <div class="campo">
+          <label for="email">Email (não editável)</label>
+          <input type="email" name="email" id="email" value="{{ pessoa.email }}" disabled>
+          <small>Para mudar o email, entre em contato com o suporte.</small>
+        </div>
+      </div>
+
+      <hr class="divisor">
+
+      <div class="botoes">
+        <a href="{% url 'cadastro:perfil' %}" class="btn-cancelar">Cancelar</a>
+        <button type="submit" class="btn-salvar">Salvar Alterações</button>
+      </div>
+    </form>
+  </section>
+</main>
+{% endblock formulario %}

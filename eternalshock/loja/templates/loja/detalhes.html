@@ -1,0 +1,456 @@
+{% extends "global/base.html" %}
+
+{% block formulario %}
+<main class="detalhes-main">
+  <section class="detalhes-container">
+    <!-- Breadcrumb -->
+    <div class="breadcrumb">
+      <a href="{% url 'loja:index' %}">Loja</a> > 
+      <a href="{% url 'loja:index' %}?categoria={{ produto.categoria }}">{{ produto.get_categoria_display }}</a> > 
+      <span>{{ produto.nome }}</span>
+    </div>
+
+    <div class="detalhes-content">
+      <!-- Imagem do produto -->
+      <div class="detalhes-imagem">
+        {% if produto.imagem %}
+          <img src="{{ produto.imagem.url }}" alt="{{ produto.nome }}" title="{{ produto.nome }}">
+        {% else %}
+          <img src="/static/global/img/placeholder.jpg" alt="Sem imagem">
+        {% endif %}
+      </div>
+
+      <!-- Informações do produto -->
+      <div class="detalhes-info">
+        <h1>{{ produto.nome }}</h1>
+        
+        <div class="detalhes-categoria">
+          <span class="badge">{{ produto.get_categoria_display }}</span>
+        </div>
+
+        <div class="detalhes-preco-section">
+          <span class="detalhes-preco">R$ {{ produto.preco }}</span>
+          <span class="detalhes-estoque">
+            {% if produto.estoque > 0 %}
+              <span class="em-estoque">✓ Em estoque ({{ produto.estoque }} disponíveis)</span>
+            {% else %}
+              <span class="fora-estoque">✗ Fora de estoque</span>
+            {% endif %}
+          </span>
+        </div>
+
+        <!-- Descrição -->
+        <div class="detalhes-descricao">
+          <h3>Descrição</h3>
+          <p>{{ produto.descricao }}</p>
+        </div>
+
+        <!-- Formulário de compra -->
+        <div class="detalhes-compra">
+          <form id="formCompra" method="post" action="{% url 'loja:adicionar_carrinho' produto.id %}">
+            {% csrf_token %}
+            
+            {% if produto.estoque > 0 %}
+              <div class="quantidade-selector">
+                <label for="quantidade">Quantidade:</label>
+                <input type="number" id="quantidade" name="quantidade" value="1" min="1" max="{{ produto.estoque }}">
+              </div>
+
+              <button type="submit" class="btn-comprar">
+                Adicionar ao Carrinho
+              </button>
+            {% else %}
+              <button type="button" class="btn-comprar-disabled" disabled>
+                Produto Indisponível
+              </button>
+            {% endif %}
+          </form>
+
+          <!-- Botão de Favorito -->
+          {% if user.is_authenticated %}
+            <div class="favorito-section">
+              {% if produto in user.pessoa.favoritos.all %}
+                <form method="post" action="{% url 'cadastro:remover_favorito' produto.id %}" style="display: inline;">
+                  {% csrf_token %}
+                  <button type="submit" class="btn-favorito-ativo">
+                    <i class="bi bi-heart-fill"></i> Remover dos Favoritos
+                  </button>
+                </form>
+              {% else %}
+                <form method="post" action="{% url 'cadastro:adicionar_favorito' produto.id %}" style="display: inline;">
+                  {% csrf_token %}
+                  <button type="submit" class="btn-favorito">
+                    <i class="bi bi-heart"></i> Adicionar aos Favoritos
+                  </button>
+                </form>
+              {% endif %}
+            </div>
+          {% else %}
+            <div class="favorito-section">
+              <a href="{% url 'login' %}" class="btn-favorito">
+                <i class="bi bi-heart"></i> Fazer login para favoritar
+              </a>
+            </div>
+          {% endif %}
+        </div>
+
+        <!-- Informações adicionais -->
+        <div class="detalhes-adicionais">
+          <ul>
+            <li><strong>Categoria:</strong> {{ produto.get_categoria_display }}</li>
+            <li><strong>Data de criação:</strong> {{ produto.criado_em|date:"d/m/Y" }}</li>
+            <li><strong>Último update:</strong> {{ produto.atualizado_em|date:"d/m/Y H:i" }}</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Produtos relacionados -->
+    {% if produtos_relacionados %}
+    <section class="relacionados-section">
+      <h2>Produtos Relacionados</h2>
+      <div class="produtos-grid-relacionados">
+        {% for prod in produtos_relacionados %}
+        <div class="produto-card-pequeno">
+          <div class="produto-imagem">
+            {% if prod.imagem %}
+              <img src="{{ prod.imagem.url }}" alt="{{ prod.nome }}">
+            {% else %}
+              <img src="/static/global/img/placeholder.jpg" alt="Sem imagem">
+            {% endif %}
+          </div>
+          <div class="produto-info-pequena">
+            <h4>{{ prod.nome }}</h4>
+            <span class="preco-pequeno">R$ {{ prod.preco }}</span>
+            <a href="{% url 'loja:detalhes' prod.id %}" class="btn-ver-pequeno">Ver mais</a>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </section>
+    {% endif %}
+  </section>
+</main>
+
+<style>
+  .detalhes-main {
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .breadcrumb {
+    margin-bottom: 20px;
+    color: #666;
+    font-size: 0.9em;
+  }
+
+  .breadcrumb a {
+    color: #007bff;
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+
+  .breadcrumb a:hover {
+    color: #0056b3;
+  }
+
+  .detalhes-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    margin-bottom: 40px;
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .detalhes-imagem {
+    width: 100%;
+    max-height: 500px;
+    overflow: hidden;
+    border-radius: 8px;
+    background: #f5f5f5;
+  }
+
+  .detalhes-imagem img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .detalhes-info {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .detalhes-info h1 {
+    font-size: 2em;
+    margin: 0 0 15px 0;
+    color: #333;
+  }
+
+  .detalhes-categoria {
+    margin-bottom: 15px;
+  }
+
+  .badge {
+    display: inline-block;
+    background: #007bff;
+    color: white;
+    padding: 6px 12px;
+    border-radius: 4px;
+    font-size: 0.9em;
+    font-weight: bold;
+  }
+
+  .detalhes-preco-section {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 25px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid #e0e0e0;
+  }
+
+  .detalhes-preco {
+    font-size: 2.5em;
+    font-weight: bold;
+    color: #28a745;
+  }
+
+  .detalhes-estoque {
+    font-size: 1.1em;
+  }
+
+  .em-estoque {
+    color: #28a745;
+    font-weight: bold;
+  }
+
+  .fora-estoque {
+    color: #dc3545;
+    font-weight: bold;
+  }
+
+  .detalhes-descricao {
+    margin: 20px 0;
+  }
+
+  .detalhes-descricao h3 {
+    margin: 0 0 10px 0;
+    color: #333;
+  }
+
+  .detalhes-descricao p {
+    color: #666;
+    line-height: 1.6;
+  }
+
+  .detalhes-compra {
+    margin: 20px 0;
+  }
+
+  .quantidade-selector {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin-bottom: 15px;
+  }
+
+  .quantidade-selector label {
+    font-weight: bold;
+    color: #333;
+  }
+
+  .quantidade-selector input {
+    width: 80px;
+    padding: 8px;
+    border: 2px solid #ddd;
+    border-radius: 4px;
+    font-size: 1em;
+  }
+
+  .btn-comprar {
+    width: 100%;
+    padding: 15px;
+    background: #28a745;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 1.1em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+
+  .btn-comprar:hover {
+    background: #218838;
+  }
+
+  .btn-comprar-disabled {
+    width: 100%;
+    padding: 15px;
+    background: #ccc;
+    color: #666;
+    border: none;
+    border-radius: 4px;
+    font-size: 1.1em;
+    font-weight: bold;
+    cursor: not-allowed;
+  }
+
+  .favorito-section {
+    margin-top: 15px;
+    display: flex;
+    gap: 10px;
+  }
+
+  .btn-favorito,
+  .btn-favorito-ativo {
+    flex: 1;
+    padding: 12px;
+    border: 2px solid #dc3545;
+    border-radius: 4px;
+    font-size: 1em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+  }
+
+  .btn-favorito {
+    background: white;
+    color: #dc3545;
+  }
+
+  .btn-favorito:hover {
+    background: #f8d7da;
+  }
+
+  .btn-favorito-ativo {
+    background: #dc3545;
+    color: white;
+  }
+
+  .btn-favorito-ativo:hover {
+    background: #c82333;
+  }
+
+  .detalhes-adicionais {
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid #e0e0e0;
+  }
+
+  .detalhes-adicionais ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .detalhes-adicionais li {
+    padding: 8px 0;
+    color: #666;
+  }
+
+  /* Produtos relacionados */
+  .relacionados-section {
+    margin-top: 40px;
+  }
+
+  .relacionados-section h2 {
+    margin-bottom: 20px;
+    color: #333;
+  }
+
+  .produtos-grid-relacionados {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 15px;
+  }
+
+  .produto-card-pequeno {
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s;
+    background: #fff;
+  }
+
+  .produto-card-pequeno:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .produto-card-pequeno .produto-imagem {
+    width: 100%;
+    height: 150px;
+    overflow: hidden;
+    background: #f5f5f5;
+  }
+
+  .produto-card-pequeno img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .produto-info-pequena {
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .produto-info-pequena h4 {
+    margin: 0;
+    font-size: 0.95em;
+    color: #333;
+  }
+
+  .preco-pequeno {
+    font-weight: bold;
+    color: #28a745;
+    font-size: 1.1em;
+  }
+
+  .btn-ver-pequeno {
+    padding: 6px;
+    background: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    text-align: center;
+    font-size: 0.85em;
+    transition: background-color 0.3s;
+  }
+
+  .btn-ver-pequeno:hover {
+    background: #0056b3;
+  }
+
+  @media (max-width: 768px) {
+    .detalhes-content {
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+
+    .detalhes-info h1 {
+      font-size: 1.5em;
+    }
+
+    .detalhes-preco {
+      font-size: 2em;
+    }
+
+    .produtos-grid-relacionados {
+      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    }
+  }
+</style>
+{% endblock formulario %}

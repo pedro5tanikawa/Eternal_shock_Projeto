@@ -1,0 +1,178 @@
+{% extends "global/base.html" %}
+
+{% block formulario %}
+<main class="deletar-main">
+  <section class="deletar-container">
+    <div class="deletar-aviso">
+      <h1>⚠️ Confirmar Deleção</h1>
+      
+      <div class="produto-preview">
+        {% if produto.imagem %}
+          <img src="{{ produto.imagem.url }}" alt="{{ produto.nome }}">
+        {% else %}
+          <img src="/static/global/img/placeholder.jpg" alt="Sem imagem">
+        {% endif %}
+      </div>
+      
+      <p class="aviso-texto">
+        Você tem certeza que deseja <strong>deletar permanentemente</strong> este produto?
+      </p>
+      
+      <div class="produto-info">
+        <p><strong>Nome:</strong> {{ produto.nome }}</p>
+        <p><strong>Categoria:</strong> {{ produto.get_categoria_display }}</p>
+        <p><strong>Preço:</strong> R$ {{ produto.preco }}</p>
+      </div>
+      
+      <p class="alerta">
+        ⚠️ Esta ação não pode ser desfeita! Todos os pedidos associados a este produto também serão afetados.
+      </p>
+      
+      <form method="post" class="form-deletar">
+        {% csrf_token %}
+        
+        <div class="botoes-confirmacao">
+          <a href="{% url 'loja:detalhes' produto.id %}" class="btn-cancelar">Cancelar</a>
+          <button type="submit" class="btn-deletar">Deletar Permanentemente</button>
+        </div>
+      </form>
+    </div>
+  </section>
+</main>
+
+<style>
+  .deletar-main {
+    padding: 20px;
+    max-width: 600px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 80vh;
+  }
+
+  .deletar-container {
+    width: 100%;
+  }
+
+  .deletar-aviso {
+    background: #fff;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    border-left: 5px solid #dc3545;
+  }
+
+  .deletar-aviso h1 {
+    margin: 0 0 30px 0;
+    color: #dc3545;
+    font-size: 2em;
+    text-align: center;
+  }
+
+  .produto-preview {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+
+  .produto-preview img {
+    max-width: 200px;
+    max-height: 200px;
+    border-radius: 8px;
+    border: 2px solid #e0e0e0;
+  }
+
+  .aviso-texto {
+    font-size: 1.1em;
+    color: #333;
+    text-align: center;
+    margin: 20px 0;
+    line-height: 1.6;
+  }
+
+  .produto-info {
+    background: #f8f9fa;
+    padding: 15px;
+    border-radius: 4px;
+    margin: 20px 0;
+  }
+
+  .produto-info p {
+    margin: 8px 0;
+    color: #555;
+  }
+
+  .produto-info strong {
+    color: #333;
+  }
+
+  .alerta {
+    background: #fff3cd;
+    color: #856404;
+    border: 1px solid #ffeaa7;
+    padding: 15px;
+    border-radius: 4px;
+    margin: 20px 0;
+    font-weight: bold;
+    text-align: center;
+  }
+
+  .botoes-confirmacao {
+    display: flex;
+    gap: 10px;
+    margin-top: 30px;
+    justify-content: center;
+  }
+
+  .btn-cancelar,
+  .btn-deletar {
+    padding: 12px 30px;
+    border: none;
+    border-radius: 4px;
+    font-size: 1em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+  }
+
+  .btn-cancelar {
+    background: #6c757d;
+    color: white;
+  }
+
+  .btn-cancelar:hover {
+    background: #5a6268;
+  }
+
+  .btn-deletar {
+    background: #dc3545;
+    color: white;
+  }
+
+  .btn-deletar:hover {
+    background: #c82333;
+  }
+
+  @media (max-width: 600px) {
+    .deletar-aviso {
+      padding: 20px;
+    }
+
+    .deletar-aviso h1 {
+      font-size: 1.5em;
+    }
+
+    .botoes-confirmacao {
+      flex-direction: column;
+    }
+
+    .btn-cancelar,
+    .btn-deletar {
+      width: 100%;
+    }
+  }
+</style>
+{% endblock formulario %}

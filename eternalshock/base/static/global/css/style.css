@@ -117,50 +117,25 @@
     color: #999;
     border-top: 2px solid crimson;
   }
-  
-  /* ===== RESPONSIVIDADE ===== */
+
+/* ===== ARTICLE CONTAINER ===== */
+article.bg-secondary {
+  background-image: url('/static/global/img/fundo%20container.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* ===== RESPONSIVIDADE ===== */
   
   /* Telas médias (tablets e notebooks pequenos) */
   @media (max-width: 992px) {
-    nav ul li {
-      display: block;
-      margin: 10px 0;
-    }
-  
-    .galeria img {
-      width: 70%;
-    }
-  
-    main {
-      padding: 30px 10px;
-    }
-  }
-  
-  /* Telas pequenas (celulares) */
-  @media (max-width: 600px) {
-    header {
-      padding: 15px 5px;
-    }
-  
-    .titulor {
-      font-size: clamp(1.5rem, 6vw, 2.5rem);
-      line-height: 1.3;
-    }
-  
-    main h3 {
-      font-size: 1rem;
-      padding: 0 10px;
-    }
-  
-    .galeria {
-      gap: 15px;
-    }
-  
     .galeria img {
       width: 90%;
     }
   }
-  .dropdown-menu {
+
+.dropdown-menu {
     background-color: #111;
   }
   
@@ -568,7 +543,7 @@
     padding: 12px 28px;
     border: 2px solid var(--primary);
     background: transparent;
-    color: var(--primary);
+    color: floralwhite;
     font-size: 1rem;
     font-weight: 600;
     cursor: pointer;
@@ -815,4 +790,782 @@
     .cta-button {
         padding: 14px 40px;
     }
+}
+
+/* ===== PERFIL DO USUÁRIO ===== */
+.perfil-main {
+  padding: 40px 20px;
+  max-width: 1000px;
+  margin: 20px auto;
+}
+
+.perfil-section {
+  background: #1a1a1a;
+  padding: 40px;
+  border-radius: 8px;
+  border: 2px solid crimson;
+}
+
+.perfil-header {
+  display: flex;
+  gap: 40px;
+  margin-bottom: 30px;
+  align-items: flex-start;
+}
+
+.foto-perfil-container {
+  flex-shrink: 0;
+}
+
+.foto-perfil {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid crimson;
+}
+
+.foto-perfil-placeholder {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background: #2a2a2a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 80px;
+  color: #666;
+  border: 3px solid crimson;
+}
+
+.info-perfil {
+  flex: 1;
+}
+
+.info-perfil h1 {
+  margin: 0 0 20px 0;
+  color: crimson;
+  font-size: 2em;
+  text-shadow: 0 0 10px crimson;
+}
+
+.info-perfil p {
+  margin: 10px 0;
+  color: #ccc;
+  font-size: 1em;
+}
+
+.usuario, .email, .idade {
+  margin: 8px 0;
+}
+
+.btn-editar {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 12px 30px;
+  background: crimson;
+  color: white;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+  font-weight: bold;
+}
+
+.btn-editar:hover {
+  background: #c1121f;
+}
+
+.divisor {
+  border: none;
+  border-top: 2px solid #333;
+  margin: 30px 0;
+}
+
+.favoritos-section h2 {
+  color: crimson;
+  margin-bottom: 30px;
+  font-size: 1.8em;
+  text-shadow: 0 0 10px crimson;
+}
+
+.favoritos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.favorito-card {
+  border: 2px solid #333;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: transform 0.3s, box-shadow 0.3s;
+  background: #1a1a1a;
+}
+
+.favorito-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 20px rgba(220, 53, 69, 0.3);
+  border-color: crimson;
+}
+
+.favorito-imagem {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+}
+
+.favorito-imagem-placeholder {
+  width: 100%;
+  height: 250px;
+  background: #2a2a2a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 40px;
+  color: #666;
+}
+
+.favorito-info {
+  padding: 20px;
+}
+
+.favorito-info h3 {
+  margin: 0 0 10px 0;
+  color: crimson;
+  text-shadow: 0 0 5px crimson;
+}
+
+.descricao {
+  color: #999;
+  font-size: 0.9em;
+  margin: 10px 0;
+  min-height: 60px;
+}
+
+.preco {
+  font-size: 1.3em;
+  font-weight: bold;
+  color: #28a745;
+  margin: 10px 0;
+}
+
+.favorito-acoes {
+  display: flex;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.btn-ver,
+.btn-remover {
+  flex: 1;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9em;
+  font-weight: bold;
+  text-decoration: none;
+  display: inline-block;
+  text-align: center;
+  transition: background-color 0.3s;
+}
+
+.btn-ver {
+  background: crimson;
+  color: white;
+}
+
+.btn-ver:hover {
+  background: #c1121f;
+}
+
+.btn-remover {
+  background: #666;
+  color: white;
+}
+
+.btn-remover:hover {
+  background: #444;
+}
+
+.sem-favoritos {
+  text-align: center;
+  padding: 50px 20px;
+  background: #2a2a2a;
+  border-radius: 8px;
+  border: 1px dashed #444;
+}
+
+.sem-favoritos p {
+  color: #999;
+  font-size: 1.1em;
+  margin-bottom: 20px;
+}
+
+.btn-explorar {
+  display: inline-block;
+  padding: 12px 30px;
+  background: crimson;
+  color: white;
+  text-decoration: none;
+  border-radius: 4px;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+
+.btn-explorar:hover {
+  background: #c1121f;
+}
+
+@media (max-width: 768px) {
+  .perfil-header {
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+    text-align: center;
+  }
+
+  .foto-perfil,
+  .foto-perfil-placeholder {
+    width: 150px;
+    height: 150px;
+  }
+
+  .info-perfil {
+    width: 100%;
+  }
+
+  .favoritos-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .perfil-section {
+    padding: 20px;
+  }
+}
+
+/* ===== EDITAR PERFIL ===== */
+.editar-perfil-main {
+  padding: 40px 20px;
+  max-width: 600px;
+  margin: 50px auto;
+}
+
+.editar-perfil-section {
+  background: #1a1a1a;
+  padding: 40px;
+  border-radius: 8px;
+  border: 2px solid crimson;
+}
+
+.editar-perfil-section h1 {
+  text-align: center;
+  margin-bottom: 30px;
+  color: crimson;
+  text-shadow: 0 0 10px crimson;
+}
+
+.editar-perfil-section h2 {
+  color: crimson;
+  font-size: 1.3em;
+  margin-bottom: 20px;
+  text-shadow: 0 0 5px crimson;
+}
+
+.foto-section,
+.info-section {
+  margin-bottom: 30px;
+}
+
+.foto-preview {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.foto-atual {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid crimson;
+}
+
+.foto-placeholder {
+  width: 200px;
+  height: 200px;
+  margin: 0 auto;
+  border-radius: 50%;
+  background: #2a2a2a;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 3px dashed crimson;
+  color: #666;
+}
+
+.foto-placeholder i {
+  font-size: 60px;
+  margin-bottom: 10px;
+}
+
+.editar-perfil-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.campo {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.campo label {
+  font-weight: bold;
+  color: crimson;
+  text-shadow: 0 0 5px crimson;
+}
+
+.campo input[type="text"],
+.campo input[type="email"],
+.campo input[type="password"],
+.campo input[type="number"],
+.campo input[type="file"] {
+  padding: 12px;
+  border: 2px solid #333;
+  border-radius: 4px;
+  font-size: 1em;
+  transition: border-color 0.3s;
+  background: #222 !important;
+  color: #ccc !important;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="number"] {
+  background: #222 !important;
+  color: #ccc !important;
+  border: 2px solid #333 !important;
+  text-decoration: none !important;
+}
+
+#id_username,
+#id_password,
+#id_email,
+#id_nome,
+#id_idade,
+#username,
+#senha,
+#confirmacao_senha,
+#nome,
+#idade,
+#email {
+  background: #222 !important;
+  color: #ccc !important;
+  border: 2px solid #333 !important;
+  padding: 12px !important;
+  font-size: 1em !important;
+}
+
+#id_username:focus,
+#id_password:focus,
+#id_email:focus,
+#id_nome:focus,
+#id_idade:focus,
+#username:focus,
+#senha:focus,
+#confirmacao_senha:focus,
+#nome:focus,
+#idade:focus,
+#email:focus {
+  border-color: crimson !important;
+  box-shadow: 0 0 5px rgba(220, 53, 69, 0.5) !important;
+}
+
+ul.errorlist {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+ul.errorlist li {
+  color: #ff6b6b;
+  font-size: 0.9em;
+  margin-bottom: 5px;
+}
+
+.campo input:focus {
+  outline: none;
+  border-color: crimson;
+  box-shadow: 0 0 5px rgba(220, 53, 69, 0.5);
+}
+
+.campo input:disabled {
+  background: #111;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.campo small {
+  font-size: 0.85em;
+  color: #999;
+}
+
+.btn-cancelar,
+.btn-salvar {
+  padding: 12px 30px;
+  border: none;
+  border-radius: 4px;
+  font-size: 1em;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.btn-cancelar {
+  background: #333;
+  color: #ccc;
+}
+
+.btn-cancelar:hover {
+  background: #444;
+}
+
+.btn-salvar {
+  background: crimson;
+  color: white;
+}
+
+.btn-salvar:hover {
+  background: #c1121f;
+}
+
+@media (max-width: 600px) {
+  .editar-perfil-section {
+    padding: 20px;
+  }
+
+  .botoes {
+    flex-direction: column;
+  }
+
+  .btn-cancelar,
+  .btn-salvar {
+    width: 100%;
+  }
+}
+/* ===== CADASTRO ===== */
+.cadastro-main {
+  padding: 40px 20px;
+  max-width: 600px;
+  margin: 50px auto;
+}
+
+.cadastro-section {
+  background: #1a1a1a;
+  padding: 40px;
+  border-radius: 8px;
+  border: 2px solid crimson;
+}
+
+.cadastro-section h1 {
+  text-align: center;
+  margin-bottom: 30px;
+  color: crimson;
+  text-shadow: 0 0 10px crimson;
+}
+
+.alerta {
+  padding: 15px;
+  margin-bottom: 20px;
+  border-radius: 4px;
+}
+
+.alerta.erro {
+  background: #3a1f1f;
+  color: #ff6b6b;
+  border: 2px solid crimson;
+}
+
+.alerta.sucesso {
+  background: #1f3a1f;
+  color: #51cf66;
+  border: 2px solid #51cf66;
+}
+
+.cadastro-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.campo input[type="text"],
+.campo input[type="email"],
+.campo input[type="password"],
+.campo input[type="number"] {
+  padding: 12px;
+  border: 2px solid #333;
+  border-radius: 4px;
+  font-size: 1em;
+  transition: border-color 0.3s;
+  background: #222;
+  color: #ccc;
+}
+
+.campo input:focus {
+  outline: none;
+  border-color: crimson;
+  box-shadow: 0 0 5px rgba(220, 53, 69, 0.5);
+}
+
+.campo small {
+  font-size: 0.85em;
+  color: #999;
+}
+
+.btn-limpar,
+.btn-enviar {
+  padding: 12px 30px;
+  border: none;
+  border-radius: 4px;
+  font-size: 1em;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.btn-limpar {
+  background: #333;
+  color: #ccc;
+}
+
+.btn-limpar:hover {
+  background: #444;
+}
+
+.btn-enviar {
+  background: crimson;
+  color: white;
+}
+
+.btn-enviar:hover {
+  background: #c1121f;
+}
+
+.link-login {
+  text-align: center;
+  margin-top: 20px;
+  color: #999;
+}
+
+.link-login a {
+  color: crimson;
+  text-decoration: none;
+  font-weight: bold;
+  text-shadow: 0 0 5px crimson;
+}
+
+.link-login a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 600px) {
+  .cadastro-section {
+    padding: 20px;
+  }
+
+  .cadastro-main {
+    margin: 20px auto;
+  }
+
+  .botoes {
+    flex-direction: column;
+  }
+
+  .btn-limpar,
+  .btn-enviar {
+    width: 100%;
+  }
+}
+
+/* ===== LOGIN ===== */
+.login-main {
+  padding: 40px 20px;
+  max-width: 500px;
+  margin: 50px auto;
+}
+
+.login-section {
+  background: #1a1a1a;
+  padding: 40px;
+  border-radius: 8px;
+  border: 2px solid crimson;
+}
+
+.login-section h1 {
+  text-align: center;
+  margin-bottom: 30px;
+  color: crimson;
+  text-shadow: 0 0 10px crimson;
+}
+
+.alert {
+  padding: 15px;
+  margin-bottom: 20px;
+  border-radius: 4px;
+}
+
+.alert-danger {
+  background: #3a1f1f;
+  color: #ff6b6b;
+  border: 2px solid crimson;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.campo input[type="text"],
+.campo input[type="password"] {
+  padding: 12px;
+  border: 2px solid #333;
+  border-radius: 4px;
+  font-size: 1em;
+  transition: border-color 0.3s;
+  background: #222 !important;
+  color: #ccc !important;
+}
+
+.campo input:focus {
+  outline: none;
+  border-color: crimson;
+  box-shadow: 0 0 5px rgba(220, 53, 69, 0.5);
+}
+
+.erro {
+  color: #ff6b6b;
+  font-size: 0.9em;
+}
+
+.btn-login {
+  width: 100%;
+  padding: 12px;
+  background: crimson;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 1em;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.btn-login:hover {
+  background: #c1121f;
+}
+
+.link-recuperar {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.link-recuperar a {
+  color: crimson;
+  text-decoration: none;
+  text-shadow: 0 0 5px crimson;
+}
+
+.link-recuperar a:hover {
+  text-decoration: underline;
+}
+
+/* Django Form IDs para login */
+#id_username,
+#id_password {
+  background: #222 !important;
+  color: #ccc !important;
+  border: 2px solid #333 !important;
+  padding: 12px !important;
+  font-size: 1em !important;
+}
+
+#id_username:focus,
+#id_password:focus {
+  border-color: crimson !important;
+  box-shadow: 0 0 5px rgba(220, 53, 69, 0.5) !important;
+}
+
+/* Sobrescrever Bootstrap - ser mais específico */
+form .campo input[type="text"],
+form .campo input[type="email"],
+form .campo input[type="password"],
+form .campo input[type="number"],
+form input[type="text"],
+form input[type="email"],
+form input[type="password"],
+form input[type="number"] {
+  background: #222 !important;
+  color: #ccc !important;
+  border: 2px solid #333 !important;
+  padding: 12px !important;
+  font-size: 1em !important;
+}
+
+form .campo input:focus,
+form input:focus {
+  border-color: crimson !important;
+  box-shadow: 0 0 5px rgba(220, 53, 69, 0.5) !important;
+}
+
+.erro {
+  color: #ff6b6b;
+  font-size: 0.9em;
+}
+
+.btn-login {
+  width: 100%;
+  padding: 12px;
+  background: crimson;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 1em;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.btn-login:hover {
+  background: #c1121f;
+}
+
+.link-recuperar {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.link-recuperar a {
+  color: crimson;
+  text-decoration: none;
+  text-shadow: 0 0 5px crimson;
+}
+
+.link-recuperar a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 600px) {
+  .login-section {
+    padding: 20px;
+  }
+
+  .login-main {
+    margin: 20px auto;
+  }
 }

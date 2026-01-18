@@ -3,17 +3,27 @@
 {% block formulario %}
 <main class="cadastro-main">
   <section class="cadastro-section">
+    <h1>Criar Conta</h1>
+    
+    {% if erro %}
+      <div class="alerta erro">{{ erro }}</div>
+    {% endif %}
+    
+    {% if sucesso %}
+      <div class="alerta sucesso">{{ sucesso }}</div>
+    {% endif %}
+    
     <form class="cadastro-form" method="post" action="{% url 'cadastro:gravar' %}">
       {% csrf_token %}
 
       <div class="campo">
-        <label for="nome">Nome</label>
+        <label for="nome">Nome Completo</label>
         <input type="text" name="nome" id="nome" required>
       </div>
 
       <div class="campo">
-        <label for="idade">Telefone</label>
-        <input type="number" name="idade" id="idade">
+        <label for="idade">Idade</label>
+        <input type="number" name="idade" id="idade" min="18" required>
       </div>
 
       <div class="campo">
@@ -21,12 +31,32 @@
         <input type="email" name="email" id="email" required>
       </div>
 
+      <div class="campo">
+        <label for="username">Usuário</label>
+        <input type="text" name="username" id="username" required>
+      </div>
+
+      <div class="campo">
+        <label for="senha">Senha</label>
+        <input type="password" name="senha" id="senha" minlength="6" required>
+        <small>Mínimo de 6 caracteres</small>
+      </div>
+
+      <div class="campo">
+        <label for="confirmacao_senha">Confirmar Senha</label>
+        <input type="password" name="confirmacao_senha" id="confirmacao_senha" minlength="6" required>
+      </div>
+
       <hr class="divisor">
 
       <div class="botoes">
-        <input type="reset" value="Limpar">
-        <input type="submit" value="Enviar">
+        <button type="reset" class="btn-limpar">Limpar</button>
+        <button type="submit" class="btn-enviar">Criar Conta</button>
       </div>
+
+      <p class="link-login">
+        Já tem uma conta? <a href="{% url 'login' %}">Faça login aqui</a>
+      </p>
 
     </form>
   </section>
